@@ -76,10 +76,15 @@ $(".level2").draggable();
             // http://www.w3help.org/zh-cn/causes/SD9015
             if(e.originalEvent.wheelDelta<0){
                 //缩小
-                _zoomOut();
+                if ($(".level1").css("display")=="none") {
+                    _zoomOut();
+                    console.log();
+                }
             }else{
                 //放大
-                _zoomIn();
+                if ($(".level2").css("display")=="none") {
+                    _zoomIn();
+                }
             }
             function _zoomIn(){
                 //放大的动画效果
@@ -89,14 +94,17 @@ $(".level2").draggable();
                 };
                 $(".level2").show().css({
                     // errors!
-                    left: -(firePosition.x)+offset.left*2,
-                    top: -(firePosition.y)+offset.top*2
+                    left: parseInt(-(firePosition.x)+offset.left*2),
+                    top: parseInt(-(firePosition.y)+offset.top*2)
                 });
                 $(".level1").hide();
             }
             function _zoomOut(){
                 //缩小的动画效果
-                $(".level1").show();
+                $(".level1").show().css({
+                    left : parseInt($(".level2").css("left")/2),
+                    top : parseInt($(".level2").css("top")/2)
+                });
                 $(".level2").hide();
             }
 

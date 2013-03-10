@@ -17,8 +17,8 @@ body{
 }
 .level2{
     display: none;
-    left: 36px;
-    top: 18px;
+    left: 0px;
+    top: 0px;
     z-index: 1;
 }
 .draggable{
