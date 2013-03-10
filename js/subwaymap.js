@@ -85,9 +85,34 @@ $(".level2").draggable();
                 if ($(".level2").css("display")=="none") {
                     _zoomIn();
                 }
+
             }
             function _zoomIn(){
-                //放大的动画效果
+                var $indecator = $(".zoomIndicator").removeClass("zoomOut").addClass("zoomIn").show().css({
+                    width: 30,
+                    height: 20,
+                    left: firePosition.x-15,
+                    top: firePosition.y-10
+                });
+                setTimeout(function(){
+                    $indecator.css({
+                        width: 60,
+                        height: 40,
+                        left: firePosition.x-30,
+                        top: firePosition.y-20
+                    });
+                },300);
+                setTimeout(function(){
+                    $indecator.css({
+                        width: 111,
+                        height: 74,
+                        left: firePosition.x-55,
+                        top: firePosition.y-37
+                    });
+                },500);
+                setTimeout(function(){
+                    $indecator.hide();
+                },700);
                 var offset = {
                     left : parseInt($(".level1").css("left")),
                     top: parseInt($(".level1").css("top"))

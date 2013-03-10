@@ -21,6 +21,41 @@ body{
     top: 0px;
     z-index: 1;
 }
+
+.zoomIn,.zoomOut{
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index:100;
+}
+.lt,.rt,.lb,.rb{
+    position: absolute;
+    width: 6px;
+    height: 4px;
+    border:2px solid transparent;
+}
+.lt{left:0;top:0;}
+.rt{right:0;top:0;}
+.lb{left:0;bottom:0;}
+.rb{right:0;bottom:0;}
+.zoomIn .lt,.zoomOut .rb{
+    border-top-color:#f00;
+    border-left-color:#f00;
+}
+.zoomIn .rt,.zoomOut .lb{
+    border-top-color:#f00;
+    border-right-color:#f00;
+}
+.zoomIn .lb,.zoomOut .rt{
+    border-bottom-color:#f00;
+    border-left-color:#f00;
+}
+.zoomIn .rb,.zoomOut .lt{
+    border-bottom-color:#f00;
+    border-right-color:#f00;
+}
+
+
 .draggable{
     cursor: url(i/openhand.cur) 8 8 default;
 }
