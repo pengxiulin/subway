@@ -88,49 +88,63 @@ $(".level2").draggable();
 
             }
             function _zoomIn(){
-                var $indecator = $(".zoomIndicator").removeClass("zoomOut").addClass("zoomIn").show().css({
+                var $indecator = $(".zoomIndicator");
+                $indecator.removeClass("zoomOut").addClass("zoomIn").css({
                     width: 30,
                     height: 20,
                     left: firePosition.x-15,
-                    top: firePosition.y-10
-                });
-                setTimeout(function(){
-                    $indecator.css({
-                        width: 60,
-                        height: 40,
-                        left: firePosition.x-30,
-                        top: firePosition.y-20
-                    });
-                },300);
-                setTimeout(function(){
-                    $indecator.css({
+                    top: firePosition.y-10,
+                    opacity: .7
+                }).show();
+                console.log(firePosition.y/2);
+                function animate(){
+                    $indecator.animate({
                         width: 111,
                         height: 74,
                         left: firePosition.x-55,
-                        top: firePosition.y-37
+                        top: firePosition.y-37,
+                        opacity: .2
+                    },500,function(){
+                        $indecator.hide();
                     });
-                },500);
-                setTimeout(function(){
-                    $indecator.hide();
-                },700);
+                }
+                animate();
                 var offset = {
                     left : parseInt($(".level1").css("left")),
                     top: parseInt($(".level1").css("top"))
                 };
+                $(".level1").hide();
                 $(".level2").show().css({
-                    // errors!
                     left: parseInt(-(firePosition.x)+offset.left*2),
                     top: parseInt(-(firePosition.y)+offset.top*2)
                 });
-                $(".level1").hide();
             }
             function _zoomOut(){
-                //缩小的动画效果
                 $(".level1").show().css({
                     left : parseInt($(".level2").css("left")/2),
                     top : parseInt($(".level2").css("top")/2)
-                });
-                $(".level2").hide();
+                }).removeClass("scale2");
+                var $indecator = $(".zoomIndicator");
+                $indecator.removeClass("zoomIn").addClass("zoomOut").css({
+                    width: 111,
+                    height: 74,
+                    left: firePosition.x-55,
+                    top: firePosition.y-37,
+                    opacity: .7
+                }).show();
+                function animate(){
+                    $indecator.animate({
+                        width: 30,
+                        height: 20,
+                        left: firePosition.x-15,
+                        top: firePosition.y-10,
+                        opacity: .2
+                    },500,function(){
+                        $indecator.hide();
+                        $(".level2").hide();
+                    });
+                }
+                animate();
             }
 
         }

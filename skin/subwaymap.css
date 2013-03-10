@@ -9,6 +9,10 @@ body{
 }
 .level1,.level2{
     position: absolute;
+    -webkit-transition: opacity 0.5s ease-in;
+    -moz-transition: opacity 0.5s ease-in;
+    -o-transition: opacity 0.5s ease-in;
+    transition: opacity 0.5s ease-in;
 }
 .level1{
     z-index: 2;
@@ -21,12 +25,17 @@ body{
     top: 0px;
     z-index: 1;
 }
+.scale2{
+    -webkit-transform:scale(2);-moz-transform:scale(2);
+}
 
 .zoomIn,.zoomOut{
+    display: none;
     position: absolute;
     width: 0;
     height: 0;
     z-index:100;
+    opacity: 1;
 }
 .lt,.rt,.lb,.rb{
     position: absolute;
